@@ -151,7 +151,7 @@ class Shor:
             qc.p(n_angles[i], i)
 
         gate = qc.to_gate()
-        gate.name = "ADD"
+        gate.name = f"φADD({y})"
 
         return gate
 
@@ -190,7 +190,7 @@ class Shor:
         qc.append(add_y, qubits)
 
         gate = qc.to_gate()
-        gate.name = "mod_add"
+        gate.name = f"φADD({y}) mod N"
 
         return gate
 
@@ -220,7 +220,7 @@ class Shor:
         qc.append(QFT.inverse(), qubits)
 
         gate = qc.to_gate()
-        gate.name = "CMULT"
+        gate.name = f"CMULT({y}) mod N"
 
         return gate
 

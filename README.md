@@ -30,19 +30,18 @@ This will generate the `shor.exe` executable using the `nvq++` compiler.
 3. **Example Output**: When running the C++ implementation, you will see the distribution of measurement outcomes followed by the period extraction and final factors:
 
 ```bash
-$ ./shor.exe 27 8
-Using default t = 5
-Total number of qubits = 17
+$ ./shor.exe 63 5
+Using default t = 6
+Total number of qubits = 20
 
 Measurement outcomes: 
-
-{ 00000:3765 00001:3783 10000:3 10001:4 10010:83 10011:79 10100:337 10101:371 10110:173 10111:148 11000:165 11001:167 11010:353 11011:407 11100:76 11101:79 11110:5 11111:2 }
-Simulation runtime: 60.6144s
+{ 000000:2525 000001:2553 100010:1 100011:9 100100:96 100101:113 100110:62 100111:73 101000:162 101001:153 101010:586 101011:550 101100:273 101101:299 101110:23 101111:28 110000:20 110001:25 110010:299 110011:305 110100:585 110101:544 110110:175 110111:162 111000:86 111001:79 111010:107 111011:99 111100:3 111101:5 }
+Simulation runtime: 975.786s
 
 Selected period p = 6
 
 === Factorization Result ===
-27 = 3 x 9
+63 = 3 x 21
 ```
 
 **Python Implementation (Qiskit)**
