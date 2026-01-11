@@ -8,11 +8,14 @@ This repo documents the implementation of QFT-adder-based Shor's factoring algor
 
 The C++ version utilizes the [NVIDIA CUDA-Q](https://nvidia.github.io/cuda-quantum/latest/index.html) toolchain for high-performance quantum simulation.
 
-1. **Compilation**: Compile the source code using the `nvq++` compiler.
+1. **Compilation**: Navigate to the `cudaq` directory and use the provided `Makefile`:
 
 ```bash
-nvq++ shor.cpp -o shor.exe
+cd cudaq
+make
 ```
+This will generate the `shor.exe` executable using the `nvq++` compiler.
+
 2. **Execution**: Run the executable by providing the number to factor ($N$), the coprime base ($a$), and an optional number of phase qubits ($t$).
 ```bash
 # Syntax: ./shor.exe N a [t]
