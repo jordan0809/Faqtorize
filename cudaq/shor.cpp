@@ -208,7 +208,7 @@ int main(int argc, char* argv[]) {
     std::cout << "Simulation runtime: " << duration << "s\n";
 
     // Post-processing
-    long long threshold = static_cast<long long>(shots_count * 0.02); // discard low-count outcomes
+    long long threshold = static_cast<long long>(shots_count / (1LL << t)); // discard low-count outcomes
     post_process_shor(result, N, a, t, threshold);
 
     return 0;
@@ -496,7 +496,7 @@ void post_process_shor(
     long long N,
     long long a,
     int t,
-    int min_shots_threshold = 200
+    int min_shots_threshold
 ) {
     long long Q = 1LL << t;
     
@@ -519,11 +519,10 @@ void post_process_shor(
     // 2. Collect r candidates weighted by counts  
     std::map<long long, long long> r_candidates;
     
-    // Use provided threshold for filtering (but no lower than 1% of the total shots)
-    long long threshold = std::max(static_cast<long long>(min_shots_threshold), total_shots / 100);
+    // Use provided threshold for filtering 
     int processed = 0;
     for (const auto& [x, cnt] : x_counts) {
-        if (cnt < threshold) continue;
+        if (cnt < min_shots_threshold) continue;
         
         double phase = static_cast<double>(x) / Q;
         
